@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import {
   StyleSheet,
   Text,
@@ -7,7 +8,8 @@ import {
   FlatList,
   TouchableOpacity,
   Button,
-  Modal
+  Modal,
+  TouchableHighlight
 
 } from 'react-native';
 
@@ -101,11 +103,12 @@ export default function Acceleration({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button className="acceleration-item-btn" title="Show modal" onPress={() => setIsModalVisible(!isModalVisible)} />
+      <Button className="acceleration-item-btn" title="" onPress={() => setIsModalVisible(!isModalVisible)} />
       {selectedValues && <Modal visible={isModalVisible}>
         <View>
           <Text>{selectedValues.name}</Text>
-          <Text>{selectedValues.location}</Text>
+          <Text>Local: {selectedValues.location}</Text>
+          <Text>Incrição + desafio até: {moment(selectedValues.subscription_finish_at).format('DD/MM/YYYY')}</Text>
           <Button className="close-modal-btn" title="Fechar" onPress={() => setIsModalVisible(!isModalVisible)} />
         </View>
       </Modal>}
