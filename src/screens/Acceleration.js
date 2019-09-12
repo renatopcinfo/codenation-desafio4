@@ -101,11 +101,12 @@ export default function Acceleration({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button className="acceleration-item-btn" title="Show modal" onPress={setIsModalVisible(!isModalVisible)} />
+      <Button className="acceleration-item-btn" title="Show modal" onPress={() => setIsModalVisible(!isModalVisible)} />
       {selectedValues && <Modal visible={isModalVisible}>
         <View>
           <Text>{selectedValues.name}</Text>
-          <Button className="close-modal-btn" title="Hide modal" onPress={setIsModalVisible(!isModalVisible)} />
+          <Text>{selectedValues.location}</Text>
+          <Button className="close-modal-btn" title="Fechar" onPress={() => setIsModalVisible(!isModalVisible)} />
         </View>
       </Modal>}
 

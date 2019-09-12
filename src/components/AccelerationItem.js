@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
-import Modal from '../screens/Acceleration'
 
 export default function AccelerationItem({ item, click }) {
   return (
