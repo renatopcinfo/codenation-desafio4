@@ -103,12 +103,12 @@ export default function Acceleration({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button className="acceleration-item-btn" title="" onPress={() => setIsModalVisible(!isModalVisible)} />
+      {/* <Button className="acceleration-item-btn" title="" onPress={() => setIsModalVisible(!isModalVisible)} /> */}
       {selectedValues && <Modal visible={isModalVisible}>
         <View>
-          <Text>{selectedValues.name}</Text>
+          <Text style={styles.modalname}>{selectedValues.name}</Text>
           <Text>Local: {selectedValues.location}</Text>
-          <Text>Incrição + desafio até: {moment(selectedValues.subscription_finish_at).format('DD/MM/YYYY')}</Text>
+          <Text>Incrição + desafio enviado até {moment(selectedValues.subscription_finish_at).format('DD/MM/YYYY')}</Text>
           <Button className="close-modal-btn" title="Fechar" onPress={() => setIsModalVisible(!isModalVisible)} />
         </View>
       </Modal>}
@@ -168,5 +168,9 @@ const styles = StyleSheet.create({
     color: '#7800ff',
     fontSize: 30,
     padding: 16
+  },
+  modalname: {
+    color: '#7800ff',
+    fontSize: 20
   }
 });
