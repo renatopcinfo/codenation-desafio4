@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,10 @@ import {
   TouchableOpacity,
   Button,
   Modal
+
 } from 'react-native';
+
+//import Modal from "react-native-modal"
 
 import AccelerationItem from '../components/AccelerationItem';
 
@@ -93,8 +96,19 @@ const accelerations = [{
 }]
 
 export default function Acceleration({ navigation }) {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [selectedValues, setSelectedValues] = useState(null)
+
   return (
     <View style={styles.container}>
+      <Button className="acceleration-item-btn" title="Show modal" onPress={setIsModalVisible(!isModalVisible)} />
+      {selectedValues && <Modal visible={isModalVisible}>
+        <View>
+          <Text>{selectedValues.name}</Text>
+          <Button className="close-modal-btn" title="Hide modal" onPress={setIsModalVisible(!isModalVisible)} />
+        </View>
+      </Modal>}
+
       <View style={styles.header}>
         <Image
           style={styles.headerImage}
@@ -114,9 +128,13 @@ export default function Acceleration({ navigation }) {
       <FlatList
         data={accelerations}
         keyExtractor={item => item.slug}
-        renderItem={({ item, index }) => <AccelerationItem item={item} />}
+        renderItem={({ item, index }) => <AccelerationItem item={item} click={() => {
+          setIsModalVisible(true);
+          setSelectedValues(item);
+        }} />}
       />
     </View>
+
   );
 }
 
