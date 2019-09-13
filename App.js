@@ -6,7 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 const Routes = createStackNavigator({
   Acceleration: Acceleration,
-  Profile: Profile
+  Profile: Profile,
 })
 
 const App = createAppContainer(Routes);

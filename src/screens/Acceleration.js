@@ -8,12 +8,9 @@ import {
   FlatList,
   TouchableOpacity,
   Button,
-  Modal,
-  TouchableHighlight
+  Modal
 
 } from 'react-native';
-
-//import Modal from "react-native-modal"
 
 import AccelerationItem from '../components/AccelerationItem';
 
@@ -103,13 +100,12 @@ export default function Acceleration({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <Button className="acceleration-item-btn" title="" onPress={() => setIsModalVisible(!isModalVisible)} /> */}
-      {selectedValues && <Modal visible={isModalVisible}>
+      {selectedValues && <Modal className="modal" visible={isModalVisible}>
         <View>
           <Text style={styles.modalname}>{selectedValues.name}</Text>
           <Text>Local: {selectedValues.location}</Text>
           <Text>Incrição + desafio enviado até {moment(selectedValues.subscription_finish_at).format('DD/MM/YYYY')}</Text>
-          <Button className="close-modal-btn" title="Fechar" onPress={() => setIsModalVisible(!isModalVisible)} />
+          <Button className="close-modal-btn" title="Fechar" onPress={() => setIsModalVisible(false)} />
         </View>
       </Modal>}
 
